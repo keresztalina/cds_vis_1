@@ -51,14 +51,14 @@ This code was written and executed in the UCloud application's Coder Python inte
         pip install --upgrade pip
         python3 -m pip install -r requirements.txt
 
-### 1.4.3 Run the script.
+### 1.4.3. Run the script
 In order to run the script, make sure your current directory is still the ```/cds_vis_1``` folder. From command line, run:
 
         python3 src/image_search.py <IMAGE_NAME>
         
 ```<IMAGE_NAME>``` represents a compulsory user-defined argument with which the target image must by defined. There are 1360 images in the dataset, and their names range from ```"image_0001.jpg"``` to ```"image_1360.jpg"```. After the code has finished running, the output file with the list of most similar images can be found in ```/cds_vis_1/out```.
 
-### 1.5 Discussion
+### 1.5. Discussion
 When running the code, I opted to use ```"image_0127.jpg"``` as the target image, which contains relatively small white flowers, with large amounts of grass and dirt also in the picture. The output file, ```out/image_0127.csv``` is a .csv file containing 5 rows for the 5 most similar images, and 2 columns for the filename and difference in chisqr for each of these images. 
 
 The most similar images, with a difference in chisqr of 42.67, is ```"image_0319.jpg"```, which does not show the same flower, but *does* show lots of grass and dirt. The next most similar image, ```"image_0751.jpg"```, is of a sunflower, which contains a center that is the same color as soil, and leaves that are the same color as grass. The situation is the same for the rest of the similar images, too: the algorythm has been more successful at finding green and brown than at finding similar flowers.
