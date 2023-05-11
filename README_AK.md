@@ -4,7 +4,7 @@ This assignment is ***Part 1*** of the portfolio exam for ***Visual Analytics S2
 ## 1.1. Contribution
 The initial assignment was created partially in collaboration with other students in the course, also making use of code provided as part of the course. The final code is my own. Several adjustments have been made since the initial hand-in.
 
-Here is the link to the GitHub repository containing the code for this assignment: ADD
+Here is the link to the GitHub repository containing the code for this assignment: https://github.com/keresztalina/cds_vis_1.git
 
 ## 1.2. Assignment description by Ross
 *(**NB!** This description has been edited for brevity. Find the full instructions in ```README_rdkm.md```.)*
@@ -45,18 +45,22 @@ This code was written and executed in the UCloud application's Coder Python inte
 
 ### 1.4.2. Installations
 1. Clone this repository somewhere on your device.
-2. Download the dataset from https://www.robots.ox.ac.uk/~vgg/data/flowers/17/ into ```/assignment1-simple-image-search-keresztalina/data``` and unzip it. The script can only be run if the folder containing the files has been unzipped.
-3. Open a terminal and navigate into the ```/assignment1-simple-image-search-keresztalina``` folder. Run the following lines in order to install the necessary packages:
+2. Create a ```/data``` folder within the repository. Download the dataset from https://www.robots.ox.ac.uk/~vgg/data/flowers/17/ into ```/cds_vis_1/data``` and unzip it. The script can only be run if the folder containing the files has been unzipped.
+3. Open a terminal and navigate into the ```/cds_vis_1``` folder. Run the following lines in order to install the necessary packages:
         
         pip install --upgrade pip
         python3 -m pip install -r requirements.txt
-4. Within the script, change the target image to whichever image you would like to compare.
 
 ### 1.4.3 Run the script.
-In order to run the script, make sure your current directory is still the ```/assignment1-simple-image-search-keresztalina``` folder. From command line, run:
+In order to run the script, make sure your current directory is still the ```/cds_vis_1``` folder. From command line, run:
 
-        python3 src/image_search.py
-
-The output file with the list of most similar images can be found in ```/assignment1-simple-image-search-keresztalina/out```.
+        python3 src/image_search.py <IMAGE_NAME>
+        
+```<IMAGE_NAME>``` represents a compulsory user-defined argument with which the target image must by defined. There are 1360 images in the dataset, and their names range from ```"image_0001.jpg"``` to ```"image_1360.jpg"```. After the code has finished running, the output file with the list of most similar images can be found in ```/cds_vis_1/out```.
 
 ### 1.5 Discussion
+When running the code, I opted to use ```"image_0127.jpg"``` as the target image, which contains relatively small white flowers, with large amounts of grass and dirt also in the picture. The output file, ```out/image_0127.csv``` is a .csv file containing 5 rows for the 5 most similar images, and 2 columns for the filename and difference in chisqr for each of these images. 
+
+The most similar images, with a difference in chisqr of 42.67, is ```"image_0319.jpg"```, which does not show the same flower, but *does* show lots of grass and dirt. The next most similar image, ```"image_0751.jpg"```, is of a sunflower, which contains a center that is the same color as soil, and leaves that are the same color as grass. The situation is the same for the rest of the similar images, too: the algorythm has been more successful at finding green and brown than at finding similar flowers.
+
+As such, a principle weakness of the color histogram method is revealed: by using only the distribution of color without taking into account color location, shapes and sizes, a lot of useful information is lost. 
